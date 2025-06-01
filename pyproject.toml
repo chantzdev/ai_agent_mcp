@@ -9,15 +9,13 @@ dependencies = [
     "requests==2.32.3", # Also for llm-tool-use
     # From llm-tool-use
     "python-dotenv==1.1.0",
-    "google-generativeai==0.8.5",
     # langchain
     "langchain==0.3.25",
-    "langchain-openai==0.3.16",
     "langchain-core==0.3.59",
     "langchain-mcp-adapters==0.0.9",
     "langgraph==0.4.3",
-    "langchain-google-genai==2.0.10",
     "black>=25.1.0",
+    "langchain-ollama==0.3.2",
 ]
 
 [project.optional-dependencies]
@@ -35,9 +33,4 @@ smolagents = [
     "torch",
     "smolagents[mcp]",
     "transformers",
-]
-
-openai = [
-    "openai",
-    "openai-agents",
 ]
