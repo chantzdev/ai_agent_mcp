@@ -1,5 +1,5 @@
 import asyncio
-from pathlib import Path
+# from pathlib import Path
 from dotenv import load_dotenv
 from langchain_core.messages import HumanMessage
 from langchain_ollama import ChatOllama
@@ -9,24 +9,41 @@ from langgraph.prebuilt import create_react_agent
 load_dotenv()
 
 model = ChatOllama(model="qwen2.5:7b", temperature=0)
-ROOT_FOLDER = Path(__file__).parent.parent.absolute()
-MCP_SERVER_PATH = str(ROOT_FOLDER / "mcp-server")
+# local
+# ROOT_FOLDER = Path(__file__).parent.parent.absolute()
+# MCP_SERVER_PATH = str(ROOT_FOLDER / "mcp-server")
 
+# mcp_config = {
+#     "binance": {
+#         "command": "python",
+#         "args": [MCP_SERVER_PATH+"/binance.py"],
+#         "transport": "stdio",
+#     },
+#     "cat-fact": {
+#         "command": "python",
+#         "args": [MCP_SERVER_PATH+"/cat_fact.py"],
+#         "transport": "stdio",
+#     },
+#     "chuck-noris-joke": {
+#         "command": "python",
+#         "args": [MCP_SERVER_PATH+"/chuck_noris_joke.py"],
+#         "transport": "stdio",
+#     }
+# }
+
+# remote
 mcp_config = {
     "binance": {
-        "command": "python",
-        "args": [MCP_SERVER_PATH+"/binance.py"],
-        "transport": "stdio",
+        "url": "http://localhost:8001/sse",
+        "transport": "sse",
     },
     "cat-fact": {
-        "command": "python",
-        "args": [MCP_SERVER_PATH+"/cat_fact.py"],
-        "transport": "stdio",
+        "url": "http://localhost:8002/sse",
+        "transport": "sse",
     },
     "chuck-noris-joke": {
-        "command": "python",
-        "args": [MCP_SERVER_PATH+"/chuck_noris_joke.py"],
-        "transport": "stdio",
+        "url": "http://localhost:8003/sse",
+        "transport": "sse",
     }
 }
 
