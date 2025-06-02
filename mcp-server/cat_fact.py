@@ -1,7 +1,11 @@
 import requests
 from mcp.server.fastmcp import FastMCP
 
-mcp = FastMCP("Cat Facts MCP")
+# local
+# mcp = FastMCP("Cat Facts MCP")
+
+# remote
+mcp = FastMCP("Cat Facts MCP", host="0.0.0.0", port=8000)
 
 
 @mcp.tool()
@@ -17,5 +21,8 @@ def get_cat_fact() -> str:
     return response.json()["fact"]
 
 if __name__ == "__main__":
-    print(get_cat_fact())
-    mcp.run(transport="stdio")
+    # local
+    # cp.run(transport="stdio")
+    
+    # remote
+    mcp.run(transport="sse")

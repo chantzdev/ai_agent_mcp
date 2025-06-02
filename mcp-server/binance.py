@@ -3,7 +3,11 @@ from typing import Any
 import requests
 from mcp.server.fastmcp import FastMCP
 
-mcp = FastMCP("Binance MCP")
+# local
+#mcp = FastMCP("Binance MCP")
+
+# remote
+mcp = FastMCP("Binance MCP", host="0.0.0.0", port=8000)
 
 SYMBOL_MAP = {
     "bitcoin": "BTCUSDT",
@@ -38,4 +42,8 @@ def get_price(symbol: str) -> Any:
 
 
 if __name__ == "__main__":
-    mcp.run(transport="stdio")
+    # local
+    # mcp.run(transport="stdio")
+    
+    # remote
+    mcp.run(transport="sse")

@@ -1,7 +1,11 @@
 import requests
 from mcp.server.fastmcp import FastMCP
 
-mcp = FastMCP("Chuck Noris Jokes MCP")
+# local
+# mcp = FastMCP("Chuck Noris Jokes MCP")
+
+# remote
+mcp = FastMCP("Chuck Noris Jokes MCP", host="0.0.0.0", port=8000)
 
 
 @mcp.tool()
@@ -17,5 +21,8 @@ def get_chuck_noris_joke() -> str:
     return response.json()["value"]
 
 if __name__ == "__main__":
-    print(get_chuck_noris_joke())
-    mcp.run(transport="stdio")
+    # local
+    # mcp.run(transport="stdio")
+    
+    # remote
+    mcp.run(transport="sse")

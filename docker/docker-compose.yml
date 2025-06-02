@@ -1,0 +1,33 @@
+services:
+  binance:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    command: ["python", "binance.py"]
+    volumes:
+      - ../mcp-server/binance.py:/app/binance.py
+    working_dir: /app
+    ports:
+      - "8001:8000"
+
+  cat_fact:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    command: ["python", "cat_fact.py"]
+    volumes:
+      - ../mcp-server/cat_fact.py:/app/cat_fact.py
+    working_dir: /app
+    ports:
+      - "8002:8000"
+
+  chuck_noris_joke:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    command: ["python", "chuck_noris_joke.py"]
+    volumes:
+      - ../mcp-server/chuck_noris_joke.py:/app/chuck_noris_joke.py
+    working_dir: /app
+    ports:
+      - "8003:8000"
