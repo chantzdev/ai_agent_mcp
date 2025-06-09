@@ -74,9 +74,12 @@ async def main():
                 tools = client.get_tools()
                 system_message = (
                     "You are an AI assistant with access to the following tools: {tools}. "
+                    "Each tool may have parameters. "
                     "Before executing any tool, you must ask the user for permission. "
+                    "When asking, clearly show the tool name and its parameters. "
                     "Prompt the user with a yes/no question in this format: "
-                    "'Do you want me to execute the tool <tool_name>? (y/n)'. "
+                    "- If the tool has parameters: 'Do you want me to execute the tool <tool_name> with these parameters: <parameter_list>? (y/n)' "
+                    "- If the tool has no parameters: 'Do you want me to execute the tool <tool_name>? (y/n)' "
                     "Accept 'y', 'Y', 'n', or 'N' as valid responses. "
                     "If the user replies with 'y' or 'Y', proceed to execute the tool. "
                     "If the user replies with 'n' or 'N', do not execute the tool and continue the conversation. "
