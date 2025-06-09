@@ -72,7 +72,17 @@ async def main():
         if mcp_config:
             async with MultiServerMCPClient(mcp_config) as client:
                 tools = client.get_tools()
-                agent = create_react_agent(model, tools)
+                system_message = (
+                    "You are an AI assistant with access to the following tools: {tools}. "
+                    "Before executing any tool, you must ask the user for permission. "
+                    "Prompt the user with a yes/no question in this format: "
+                    "'Do you want me to execute the tool <tool_name>? (y/n)'. "
+                    "Accept 'y', 'Y', 'n', or 'N' as valid responses. "
+                    "If the user replies with 'y' or 'Y', proceed to execute the tool. "
+                    "If the user replies with 'n' or 'N', do not execute the tool and continue the conversation. "
+                    "If the user replies with anything else, repeat the question until a valid answer is given."
+                )
+                agent = create_react_agent(model, tools, prompt=system_message)
                 print("Type your question (type '/exit' to quit):")
                 history = []
                 while True:
