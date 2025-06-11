@@ -80,6 +80,7 @@ async def main():
                     "Prompt the user with a yes/no question in this format: "
                     "- If the tool has parameters: 'Do you want me to execute the tool <tool_name> with these parameters: <parameter_list>? (y/n)' "
                     "- If the tool has no parameters: 'Do you want me to execute the tool <tool_name>? (y/n)' "
+                    "- if the tool is more than one, you need to ask each of it"
                     "Accept 'y', 'Y', 'n', or 'N' as valid responses. "
                     "If the user replies with 'y' or 'Y', proceed to execute the tool. "
                     "If the user replies with 'n' or 'N', do not execute the tool and continue the conversation. "
